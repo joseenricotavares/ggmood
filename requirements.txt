@@ -1,0 +1,14 @@
+nltk==3.9.1
+numpy==1.26.4
+pandas==2.1.4
+requests==2.32.3
+scikit-learn==1.4.2
+sentence-transformers==4.1.0
+streamlit==1.44.1
+wordcloud==1.9.4
+pillow==11.1.0
+joblib==1.2.0
+transformers==4.51.3
+torch
+torchvision
+matplotlib

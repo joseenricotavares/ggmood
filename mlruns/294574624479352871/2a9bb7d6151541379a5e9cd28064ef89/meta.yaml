@@ -1,0 +1,16 @@
+artifact_uri: file:///c:/Users/José/Desktop/Projetos Python/GGMood - Projeto Final
+  Tutoria MLOPs/notebooks/../mlruns/294574624479352871/2a9bb7d6151541379a5e9cd28064ef89/artifacts
+end_time: 1746476490456
+entry_point_name: ''
+experiment_id: '294574624479352871'
+lifecycle_stage: active
+run_id: 2a9bb7d6151541379a5e9cd28064ef89
+run_name: pycaret-embeddings-classification-24190eff-da82-4ab2-a3ed-1ec774969c73
+run_uuid: 2a9bb7d6151541379a5e9cd28064ef89
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746429831627
+status: 3
+tags: []
+user_id: José

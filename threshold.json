@@ -1,0 +1,22 @@
+{
+    "Maximal positivity": {
+        "threshold": 0.10,
+        "description": "<i>Only the strongest negativity stands out.</i> The model is very generous with positives, classifying even weakly negative reviews as positive. Negative sentiment is only highlighted when it's clear and intense.<br><span style='color: #00BFFF'>(Threshold = 0.1)</span>"
+    },
+    "Slightly critical": {
+        "threshold": 0.30,
+        "description": "<i>Let a bit of negativity through.</i> Positive reviews dominate, but clearer negative sentiments will be visible. Still focused on the overall enjoyment but negatives will represent more critical voices.<br><span style='color: #00BFFF'>(Threshold = 0.3)</span>"
+    },
+    "Balanced perspective": {
+        "threshold": 0.50,
+        "description": "<i>Equal focus on positive and negative.</i> An even split between positive and negative feedback. Both sides of the experience are shown clearly, offering a fair and comprehensive view of the game.<br><span style='color: #00BFFF'>(Threshold = 0.5)</span>"
+    },
+    "Increasingly skeptical": {
+        "threshold": 0.70,
+        "description": "<i>Highlights dissatisfaction.</i> The model is more critical, with negative feedback gaining prominence. Positivity must be more certain and explicit to stand out.<br><span style='color: #00BFFF'>(Threshold = 0.7)</span>"
+    },
+    "Highly selective": {
+        "threshold": 0.90,
+        "description": "<i>Only the most clearly positive remain.</i> Reviews are interpreted critically unless they are clearly and strongly favorable.<br><span style='color: #00BFFF'>(Threshold = 0.9)</span>"
+    }
+}
