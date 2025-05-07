@@ -65,6 +65,7 @@ def get_game_details(appid):
         return res.json()[str(appid)]["data"]
     return {}
 
+@st.cache_data(show_spinner=False, ttl=max_cache_time)
 def get_reviews(appid, max_reviews=600):
     reviews = []
     cursor = "*"
