@@ -1,7 +1,0 @@
-artifact_location: file:///c:/Users/José/Desktop/Projetos Python/GGMood - Projeto
-  Final Tutoria MLOPs/notebooks/../mlruns/603707472533312939
-creation_time: 1746493347242
-experiment_id: '603707472533312939'
-last_update_time: 1746493347242
-lifecycle_stage: active
-name: finetuned-sentiment-models

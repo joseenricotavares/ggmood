@@ -4,5 +4,5 @@
 !test_amazonreviews_sample0050.csv
 !train_amazonreviews_sample0005.csv
 
-/models/**
+/models/sbert_models/**
 !/models/sbert_models/gte-small.zip
