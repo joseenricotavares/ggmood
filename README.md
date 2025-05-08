@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/logo_clean.PNG" alt="GGMood logo" width="400"/>
+  <img src="images/logo_name.PNG" alt="GGMood logo" width="400"/>
 </p>
 
 
