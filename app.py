@@ -116,6 +116,34 @@ def generate_wordcloud(text, color, stopwords):
     return fig
 
 @st.cache_data(show_spinner=False, ttl=max_cache_time)
+def analyze_sentiment(predictions, reviews, threshold):
+    predictions['review'] = reviews
+    predictions['sentiment'] = predictions['prediction_score_1'].apply(
+        lambda score: "Positive" if score >= threshold else "Negative"
+    )
+
+    positive_reviews = predictions[predictions['sentiment'] == "Positive"]
+    negative_reviews = predictions[predictions['sentiment'] == "Negative"]
+
+    total_reviews = len(predictions)
+    positive_percentage = len(positive_reviews) / total_reviews * 100
+    negative_percentage = len(negative_reviews) / total_reviews * 100
+
+    avg_positive_score = positive_reviews['prediction_score_1'].mean() if len(positive_reviews) > 0 else 0
+    avg_negative_score = negative_reviews['prediction_score_0'].mean() if len(negative_reviews) > 0 else 0
+
+    return {
+        'predictions': predictions,
+        'positive_reviews': positive_reviews,
+        'negative_reviews': negative_reviews,
+        'positive_percentage': positive_percentage,
+        'negative_percentage': negative_percentage,
+        'positivity_percentage': positive_percentage,
+        'avg_positive_score': avg_positive_score,
+        'avg_negative_score': avg_negative_score
+    }
+
+@st.cache_data(show_spinner=False, ttl=max_cache_time)
 def extract_keywords_from_reviews(reviews_df, stopwords, n_clusters=3, top_n_words=7):
 
     embedding_cols = [col for col in reviews_df.columns if col.startswith("CLS")]
@@ -207,7 +235,7 @@ with col1:
     game_query = st.text_input("Search for a game available on Steam:")#, placeholder="e.g. Dota 2, Counter-Strike: Global Offensive")
 
 with col2:
-    st.session_state.max_reviews = st.slider("Max reviews", min_value=100, max_value=600, step=10, value=300)
+    st.session_state.max_reviews = st.slider("Max reviews", min_value=100, max_value=600, step=10, value=350)
 
 if 'selected_game' not in st.session_state:
     st.session_state.selected_game = None
@@ -237,20 +265,19 @@ if game_query:
                     if reviews:
                         df_embeddings = get_df_embeddings(embedding_model,reviews)
                         predictions = predict_model(sentiment_model, df_embeddings)
+                        analysis = analyze_sentiment(predictions, reviews, threshold)
 
-                        predictions['review'] = reviews
-                        predictions['sentiment'] = predictions['prediction_score_1'].apply(lambda score: "Positive" if score >= threshold else "Negative")
-                        positive_reviews = predictions[predictions['sentiment'] == "Positive"]
-                        negative_reviews = predictions[predictions['sentiment'] == "Negative"]
-                        total_reviews = len(predictions)
-                        positive_percentage = len(positive_reviews) / total_reviews * 100
-                        negative_percentage = len(negative_reviews) / total_reviews * 100
-                        positivity_percentage = positive_percentage  # Percentual de positividade
-                        avg_positive_score = positive_reviews['prediction_score_1'].mean() if len(positive_reviews) > 0 else 0
-                        avg_negative_score = negative_reviews['prediction_score_0'].mean() if len(negative_reviews) > 0 else 0
+                        predictions = analysis['predictions']
+                        positive_reviews = analysis['positive_reviews']
+                        negative_reviews = analysis['negative_reviews']
+                        positive_percentage = analysis['positive_percentage']
+                        negative_percentage = analysis['negative_percentage']
+                        positivity_percentage = analysis['positivity_percentage']
+                        avg_positive_score = analysis['avg_positive_score']
+                        avg_negative_score = analysis['avg_negative_score']
 
                         ct3.subheader("Overview")
-                        ct3.markdown(f"**📝 Total Reviews Analyzed**: <span style='font-size:16px; color:#333;'>{total_reviews}</span>", unsafe_allow_html=True)
+                        ct3.markdown(f"**📝 Total Reviews Analyzed**: <span style='font-size:16px; color:#333;'>{len(predictions)}</span>", unsafe_allow_html=True)
                         ct3.markdown(f"**🟢 Positive Sentiment Reviews**: <span style='font-size:16px; color:#2e8b57;'>{len(positive_reviews)} ({positive_percentage:.2f}%)</span>", unsafe_allow_html=True)
                         ct3.markdown(f"**🔴 Negative Sentiment Reviews**: <span style='font-size:16px; color:#a94442;'>{len(negative_reviews)} ({negative_percentage:.2f}%)</span>", unsafe_allow_html=True)
                         ct3.markdown(f"**🎯 Avg. Confidence Score (Positive)**: <span style='font-size:16px; color:#2e8b57;'>{avg_positive_score:.2f}</span>", unsafe_allow_html=True)
