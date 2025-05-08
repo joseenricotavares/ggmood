@@ -1,4 +1,6 @@
-![GGMood logo](images/logo_clean.png)
+<p align="center">
+  <img src="images/logo_clean.PNG" alt="GGMood logo" width="400"/>
+</p>
 
 
 # GGMood 🎮🧠  
