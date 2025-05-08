@@ -1,6 +1,5 @@
-<p align="center">
-  <img src="images/logo_name.PNG" alt="GGMood logo" width="400"/>
-</p>
+![GGMood Logo](https://github.com/joseenricotavares/ggmood/blob/master/images/logo_name.PNG?raw=true)
+
 
 
 # GGMood 🎮🧠  
