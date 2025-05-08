@@ -2,7 +2,6 @@
 
 
 
-# GGMood 🎮🧠  
 **Sentiment Analysis on Steam Game Reviews**
 
 This project was developed as the final deliverable of the *Machine Learning Engineering tutorship at Itaú Unibanco*.
