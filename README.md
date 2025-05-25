@@ -1,6 +1,8 @@
+> **Update – 25th May 2025**  
+> This project was awarded **1st place** 🥇 in the final ranking of the *Machine Learning Engineering Tutorship at Itaú Unibanco*.  
+> Thank you to everyone involved in this incredible learning journey!
+
 ![GGMood Logo](https://github.com/joseenricotavares/ggmood/blob/master/images/logo_name.PNG?raw=true)
-
-
 
 **Sentiment Analysis on Steam Game Reviews**
 
